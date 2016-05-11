@@ -29,7 +29,7 @@ class Player
             'attack'    => 1,
             'defence'   => 1,
             'strength'  => 1,
-            'heath'     => 10,
+            'health'     => 10,
             'archery'   => 1,
             'smelting'  => 1,
             'smithing'  => 1,

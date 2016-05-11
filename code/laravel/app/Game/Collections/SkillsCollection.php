@@ -16,7 +16,7 @@ class SkillsCollection
         'attack',
         'defence',
         'strength',
-        'heath',
+        'health',
         'archery',
         'smelting',
         'smithing',
@@ -77,7 +77,7 @@ class SkillsCollection
     public function __set($name, $value)
     {
         switch ($name) {
-            case 'heath':
+            case 'health':
                 if ($value < $this->data[$name]) {
                     Event::fire(new PlayerLossesHeath($this->data[$name] - $value, $value));
                 }

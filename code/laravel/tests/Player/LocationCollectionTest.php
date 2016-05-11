@@ -5,6 +5,7 @@ use Illuminate\Foundation\Testing\WithoutMiddleware;
 
 class LocationCollectionTest extends TestCase
 {
+    
     /**
      * Test LocationCollection getter with a known attribute
      *

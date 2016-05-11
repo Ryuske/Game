@@ -71,7 +71,7 @@ class CombatScenario
      * Look for an enemy to fight
      * - You have a 75% change of finding an enemy, otherwise nothing is found
      *
-     * @return bool|string
+     * @return bool|CombatDamageCollection
      */
     public function lookForEnemy()
     {
@@ -85,9 +85,7 @@ class CombatScenario
 
         Event::fire(new EnemyFound($this->enemy));
 
-        $this->beginCombat();
-        
-        return $this->enemy;
+        return $this->beginCombat();
     }
 
     /**
@@ -97,7 +95,7 @@ class CombatScenario
         $playerStarts = $this->combatFormulas->DoesPlayerGetFirstMove();
 
         if (!$playerStarts) {
-            $this->enemy()->attack();
+            return $this->enemy()->attack();
         }
     }
 

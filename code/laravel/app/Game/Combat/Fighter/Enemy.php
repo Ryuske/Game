@@ -45,7 +45,7 @@ class Enemy implements Fighter
         $damageDealt    = $this->combatFormulas->enemy($this->combatScenario->enemy)->damageDealt();
 
         if (!$attackerMissed) {
-            $this->combatScenario->player->skill()->heath -= $damageDealt;
+            $this->combatScenario->player->skill()->health -= $damageDealt;
         }
 
         $combatDamage = new CombatDamageCollection([
@@ -56,6 +56,8 @@ class Enemy implements Fighter
         ]);
 
         Event::fire(new EnemyAttacks($combatDamage));
+
+        return $combatDamage;
     }
 
     /**
