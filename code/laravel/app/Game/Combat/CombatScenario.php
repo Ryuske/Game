@@ -1,7 +1,10 @@
 <?php namespace App\Game\Combat;
 
+use Event;
 use App\Game\Combat\Enemies\Map;
-use App\Game\Formulas\GenericFormulas;
+use App\Game\Events\Combat\EnemyFound;
+use App\Game\Formulas\Combat\Combat as CombatFormulas;
+use App\Game\Formulas\Generic as GenericFormulas;
 use App\Game\Player\Player;
 
 class CombatScenario
@@ -27,21 +30,26 @@ class CombatScenario
     protected $player;
 
     protected $enemy;
-t
+
     protected $enemiesMap;
 
     protected $genericFormulas;
 
+    protected $combatFormulas;
+
     public function __construct()
     {
-        $this->player = new Player;
-        $this->enemiesMap = new Map;
-        $this->genericFormulas = new GenericFormulas;
+        $this->player           = new Player;
+        $this->enemiesMap       = new Map;
+        $this->genericFormulas  = new GenericFormulas;
+        $this->combatFormulas   = new CombatFormulas;
     }
 
     /**
      * Look for an enemy to fight
      * - You have a 75% change of finding an enemy, otherwise nothing is found
+     *
+     * @return bool|string
      */
     public function lookForEnemy()
     {
@@ -52,11 +60,20 @@ t
 
         $nearByEnemies = $this->enemiesMap->enemiesIn($this->player->location()->city);
         $this->enemy = $this->chooseRandomEnemy($nearByEnemies);
+
+        Event::fire(new EnemyFound($this->enemy));
+
+        $this->beginCombat();
+        
+        return $this->enemy;
     }
 
-    protected function chooseRandomEnemy($enemies)
-    {
-        return array_rand($enemies);
+    public function beginCombat() {
+        $playerStarts = $this->combatFormulas->PlayerGetsFirstMove();
+
+        if (!$playerStarts) {
+            $this->enemy()->attack();
+        }
     }
 
     public function player()
@@ -66,6 +83,11 @@ t
 
     public function enemy()
     {
+        return new Fighter\Enemy($this->enemy);
+    }
 
+    protected function chooseRandomEnemy($enemies)
+    {
+        return $enemies[array_rand($enemies)];
     }
 }

@@ -1,6 +1,9 @@
 <?php namespace App\Game\Player;
 
+use Event;
 use App\Game\Collections\LocationCollection;
+use App\Game\Combat\CombatScenario;
+use App\Game\Events\Combat\EnemyNotFound;
 use App\Game\Movement\Movement;
 
 class Player 
@@ -57,5 +60,19 @@ class Player
         }
 
         return false;
+    }
+
+    public function lookForFight()
+    {
+        $combat = new CombatScenario;
+        $enemy = $combat->lookForEnemy();
+        
+        if (!$enemy) {
+            Event::fire(new EnemyNotFound);
+
+            return false;
+        }
+
+        return $combat;
     }
 }
