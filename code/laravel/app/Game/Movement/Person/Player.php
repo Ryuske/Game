@@ -15,6 +15,10 @@ class Player implements Person
      */
     private $map;
 
+    /**
+     * Player constructor.
+     * @param \App\Game\Player\Player $player
+     */
     public function __construct(\App\Game\Player\Player $player)
     {
         $this->map      = new Map;

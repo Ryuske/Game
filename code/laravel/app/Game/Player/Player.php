@@ -31,7 +31,7 @@ class Player
     }
 
     /**
-     * Queue location data for immediate access
+     * Return an instance of a LocationCollection with the data set to the players current data
      *
      * @return $this
      */
