@@ -1,6 +1,8 @@
 <?php
 
 use App\Game\Combat\CombatScenario;
+use App\Game\Events\Combat\EnemyFound;
+use App\Game\Events\Combat\EnemyNotFound;
 use App\Game\Player\Player;
 use Illuminate\Foundation\Testing\WithoutMiddleware;
 
@@ -14,8 +16,17 @@ class StartCombatTest extends TestCase
      */
     public function testCombatDamageCollection()
     {
+        $this->expectsEvents([
+            EnemyFound::class,
+            EnemyNotFound::class
+        ]);
+
         $player = new Player;
 
+        for ($i=0; $i<3; $i++) {
+            $player->lookForFight();
+        }
+        
         do {
             $combat = $player->lookForFight();
         } while (!$combat);
