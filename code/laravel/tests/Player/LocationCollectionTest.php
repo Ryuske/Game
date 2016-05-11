@@ -6,7 +6,7 @@ use Illuminate\Foundation\Testing\WithoutMiddleware;
 class LocationCollectionTest extends TestCase
 {
     /**
-     * Test Player location getter
+     * Test LocationCollection getter with a known attribute
      *
      * @return void
      */
@@ -17,6 +17,11 @@ class LocationCollectionTest extends TestCase
         $this->assertEquals('Lattocy', $player->location()->city);
     }
 
+    /**
+     * Test LocationCollection setter & saving data to original data source
+     *
+     * @return void
+     */
     public function testLocationCollectionAttributeSetter()
     {
         $player = new Player;
@@ -25,6 +30,7 @@ class LocationCollectionTest extends TestCase
         $location->city = 'Zandor';
         $location->save();
 
+        $this->assertEquals('Zandor', $location->city);
         $this->assertEquals('Zandor', $player->location()->city);
     }
 }

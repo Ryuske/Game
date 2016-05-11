@@ -20,6 +20,11 @@ class MovementTest extends TestCase
         ], $player->location()->nearByCities());
     }
 
+    /**
+     * Test function to walk to a neighboring city
+     *
+     * @return void
+     */
     public function testWalkingToNeighboringCity()
     {
         $player = new Player;
@@ -28,6 +33,11 @@ class MovementTest extends TestCase
         $this->assertEquals('Zandor', $player->location()->city);
     }
 
+    /**
+     * Test functionality of trying to walk to a non-neighboring city
+     *
+     * @return void
+     */
     public function testWalkingToNonNeighboringCity()
     {
         $player = new Player;
