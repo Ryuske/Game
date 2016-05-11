@@ -1,5 +1,6 @@
 <?php namespace App\Game\Player;
 
+use App\Game\Collections\SkillsCollection;
 use Event;
 use App\Game\Collections\LocationCollection;
 use App\Game\Combat\CombatScenario;
@@ -24,6 +25,21 @@ class Player
      * @var array
      */
     protected $playerData = [
+        'skills' => [
+            'attack'    => 1,
+            'defence'   => 1,
+            'strength'  => 1,
+            'heath'     => 10,
+            'archery'   => 1,
+            'smelting'  => 1,
+            'smithing'  => 1,
+            'mining'    => 1,
+            'coding'    => 1,
+            'fletching' => 1,
+            'alchemy'   => 1,
+            'cooking'   => 1,
+            'breeding'  => 1
+        ],
         'location' => [
             'city' => 'Lattocy'
         ]
@@ -37,6 +53,15 @@ class Player
         $this->movement = new Movement;
     }
 
+    /**
+     * Return an instance of a SkillsCollection with the data set to the players current data
+     *
+     * @return SkillsCollection
+     */
+    public function skill() {
+        return new SkillsCollection($this->playerData['skills']);
+    }
+    
     /**
      * Return an instance of a LocationCollection with the data set to the players current data
      *
@@ -74,7 +99,7 @@ class Player
      */
     public function lookForFight()
     {
-        $combat = new CombatScenario;
+        $combat = new CombatScenario($this);
         $enemy = $combat->lookForEnemy();
         
         if (!$enemy) {
@@ -84,5 +109,13 @@ class Player
         }
 
         return $combat;
+    }
+
+    /**
+     * Controls a players death - Game Over
+     */
+    public function died()
+    {
+        die('Player died!');
     }
 }

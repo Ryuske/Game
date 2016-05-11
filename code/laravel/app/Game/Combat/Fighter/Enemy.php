@@ -1,5 +1,6 @@
 <?php namespace App\Game\Combat\Fighter;
 
+use App\Game\Combat\CombatScenario;
 use Event;
 use App\Game\Collections\CombatDamageCollection;
 use App\Game\Events\Combat\EnemyAttacks;
@@ -13,23 +14,24 @@ class Enemy implements Fighter
 {
 
     /**
-     * @var
+     * @var CombatScenario
      */
-    protected $enemy;
+    protected $combatScenario;
 
     /**
      * @var CombatFormulas
      */
     protected $combatFormulas;
 
+
     /**
      * Enemy constructor.
-     * @param $enemy
+     * @param CombatScenario $combatScenario
      */
-    public function __construct($enemy)
+    public function __construct(CombatScenario $combatScenario)
     {
-        $this->enemy            = $enemy;
-        $this->combatFormulas   = new CombatFormulas;
+        $this->combatScenario = $combatScenario;
+        $this->combatFormulas = new CombatFormulas;
     }
 
     /**
@@ -39,11 +41,15 @@ class Enemy implements Fighter
      */
     function attack()
     {
-        $attackerMissed = !$this->combatFormulas->enemy($this->enemy)->isAttackSuccessful();
-        $damageDealt    = $this->combatFormulas->enemy($this->enemy)->damageDealt();
+        $attackerMissed = !$this->combatFormulas->enemy($this->combatScenario->enemy)->isAttackSuccessful();
+        $damageDealt    = $this->combatFormulas->enemy($this->combatScenario->enemy)->damageDealt();
+
+        if (!$attackerMissed) {
+            $this->combatScenario->player->skill()->heath -= $damageDealt;
+        }
 
         $combatDamage = new CombatDamageCollection([
-            'attacker'          => $this->enemy,
+            'attacker'          => $this->combatScenario->enemy,
             'defender'          => 'Player',
             'attacker_missed'   => ($attackerMissed) ? 'true' : 'false',
             'damage_dealt'      => $damageDealt

@@ -13,7 +13,7 @@ class Combat
      *
      * @return bool
      */
-    public function PlayerGetsFirstMove() {
+    public function DoesPlayerGetFirstMove() {
         $modifier = rand(1, 2);
 
         return (1 === $modifier);

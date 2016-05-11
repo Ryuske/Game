@@ -19,7 +19,7 @@ class CombatScenario
      * $combat->lookForEnemy();
      * $combat->player()->attack() | $combat->player()->run()
      * $combat->enemy()->attack() | $combat->enemy()->run()
-     * 
+     *
      * You're now fighting <enemy>
      * -- random, who goes first --
      * <enemy> attacks
@@ -31,12 +31,15 @@ class CombatScenario
      * Player successfully ran away | Player failed to run away
      */
 
-    protected $player;
+    /**
+     * @var Player
+     */
+    public $player;
 
     /**
      * @var
      */
-    protected $enemy;
+    public $enemy;
 
     /**
      * @var Map
@@ -56,9 +59,9 @@ class CombatScenario
     /**
      * CombatScenario constructor.
      */
-    public function __construct()
+    public function __construct(Player &$player)
     {
-        $this->player           = new Player;
+        $this->player           = $player;
         $this->enemiesMap       = new Map;
         $this->genericFormulas  = new GenericFormulas;
         $this->combatFormulas   = new CombatFormulas;
@@ -91,7 +94,7 @@ class CombatScenario
      * If an enemy is found, begin the combat
      */
     public function beginCombat() {
-        $playerStarts = $this->combatFormulas->PlayerGetsFirstMove();
+        $playerStarts = $this->combatFormulas->DoesPlayerGetFirstMove();
 
         if (!$playerStarts) {
             $this->enemy()->attack();
@@ -115,7 +118,7 @@ class CombatScenario
      */
     public function enemy()
     {
-        return new Fighter\Enemy($this->enemy);
+        return new Fighter\Enemy($this);
     }
 
     /**
