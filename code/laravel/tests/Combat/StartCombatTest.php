@@ -14,7 +14,7 @@ class StartCombatTest extends TestCase
      *
      * @return void
      */
-    public function testCombatDamageCollection()
+    public function testStartCombat()
     {
         $this->expectsEvents([
             EnemyFound::class,
@@ -26,7 +26,7 @@ class StartCombatTest extends TestCase
         for ($i=0; $i<3; $i++) {
             $player->lookForFight();
         }
-        
+
         do {
             $combat = $player->lookForFight();
         } while (!$combat);
