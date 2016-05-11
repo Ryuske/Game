@@ -44,6 +44,8 @@ class Player implements Person
      */
     function walkTo($city)
     {
-        $this->player->location()->city = $city;
+        $location = $this->player->location();
+        $location->city = $city;
+        $location->save();
     }
 }

@@ -3,23 +3,26 @@
 use App\Game\Player\Player;
 use Illuminate\Foundation\Testing\WithoutMiddleware;
 
-class GetterAndSetterTest extends TestCase
+class LocationCollectionTest extends TestCase
 {
     /**
      * Test Player location getter
      *
      * @return void
      */
-    public function testPlayerCityGetter()
+    public function testLocationCollectionAttributeGetter()
     {
         $player = new Player;
 
         $this->assertEquals('Lattocy', $player->location()->city);
     }
 
-    public function testPlayerCitySetter() {
+    public function testLocationCollectionAttributeSetter() {
         $player = new Player;
-        $player->location()->city = 'Zandor';
+
+        $location = $player->location();
+        $location->city = 'Zandor';
+        $location->save();
 
         $this->assertEquals('Zandor', $player->location()->city);
     }
