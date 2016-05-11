@@ -9,6 +9,7 @@ class EnemyAttacksTest extends TestCase
 {
 
     /**
+     * Make sure everything works with enemy attacks
      *
      * @return void
      */
