@@ -7,6 +7,10 @@ use App\Game\Formulas\Combat\Combat as CombatFormulas;
 use App\Game\Formulas\Generic as GenericFormulas;
 use App\Game\Player\Player;
 
+/**
+ * Class CombatScenario
+ * @package App\Game\Combat
+ */
 class CombatScenario
 {
 
@@ -29,14 +33,29 @@ class CombatScenario
 
     protected $player;
 
+    /**
+     * @var
+     */
     protected $enemy;
 
+    /**
+     * @var Map
+     */
     protected $enemiesMap;
 
+    /**
+     * @var GenericFormulas
+     */
     protected $genericFormulas;
 
+    /**
+     * @var CombatFormulas
+     */
     protected $combatFormulas;
 
+    /**
+     * CombatScenario constructor.
+     */
     public function __construct()
     {
         $this->player           = new Player;
@@ -68,6 +87,9 @@ class CombatScenario
         return $this->enemy;
     }
 
+    /**
+     * If an enemy is found, begin the combat
+     */
     public function beginCombat() {
         $playerStarts = $this->combatFormulas->PlayerGetsFirstMove();
 
@@ -76,16 +98,33 @@ class CombatScenario
         }
     }
 
+    /**
+     * Accessor to player combat actions
+     *
+     * @return Fighter\Player
+     */
     public function player()
     {
         return new Fighter\Player;
     }
 
+    /**
+     * Accessor to enemy combat actions
+     *
+     * @return Fighter\Enemy
+     */
     public function enemy()
     {
         return new Fighter\Enemy($this->enemy);
     }
 
+    /**
+     * Pick an enemy at random out of the list given
+     * - Eventually this will be more complex, accounting for the rarity of the enemies
+     *
+     * @param $enemies
+     * @return mixed
+     */
     protected function chooseRandomEnemy($enemies)
     {
         return $enemies[array_rand($enemies)];

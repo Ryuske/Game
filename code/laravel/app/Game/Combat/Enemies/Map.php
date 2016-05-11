@@ -2,9 +2,16 @@
 
 use \App\Game\Movement\Map as GameMap;
 
+/**
+ * Class Map
+ * @package App\Game\Combat\Enemies
+ */
 class Map extends GameMap
 {
 
+    /**
+     * @var array
+     */
     protected $enemies = [
         'Rafe',
         'Eci',
@@ -18,6 +25,9 @@ class Map extends GameMap
         'Gast'
     ];
 
+    /**
+     * @var array
+     */
     protected $enemyLocations = [
         'Yarie' => [
             'Eci',

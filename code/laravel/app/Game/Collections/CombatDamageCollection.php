@@ -1,5 +1,9 @@
 <?php namespace App\Game\Collections;
 
+/**
+ * Class CombatDamageCollection
+ * @package App\Game\Collections
+ */
 class CombatDamageCollection
 {
 
@@ -57,6 +61,11 @@ class CombatDamageCollection
         $this->data[$name] = $value;
     }
 
+    /**
+     * Returns all the data known to the collection
+     *
+     * @return mixed
+     */
     public function all()
     {
         return $this->data;

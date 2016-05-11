@@ -5,6 +5,10 @@ use App\Game\Collections\CombatDamageCollection;
 use App\Game\Events\Combat\EnemyAttacks;
 use App\Game\Formulas\Combat\Combat as CombatFormulas;
 
+/**
+ * Class Enemy
+ * @package App\Game\Combat\Fighter
+ */
 class Enemy implements Fighter
 {
 
@@ -13,8 +17,15 @@ class Enemy implements Fighter
      */
     protected $enemy;
 
+    /**
+     * @var CombatFormulas
+     */
     protected $combatFormulas;
 
+    /**
+     * Enemy constructor.
+     * @param $enemy
+     */
     public function __construct($enemy)
     {
         $this->enemy            = $enemy;
@@ -22,6 +33,8 @@ class Enemy implements Fighter
     }
 
     /**
+     * Make the enemy do an attack
+     *
      * @return mixed
      */
     function attack()
@@ -40,6 +53,8 @@ class Enemy implements Fighter
     }
 
     /**
+     * Have the enemy heal themselves
+     *
      * @return mixed
      */
     function heal()
@@ -48,6 +63,8 @@ class Enemy implements Fighter
     }
 
     /**
+     * Make the enemy attempt to flee from combat
+     *
      * @return mixed
      */
     function run()

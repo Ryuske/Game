@@ -6,7 +6,11 @@ use App\Game\Combat\CombatScenario;
 use App\Game\Events\Combat\EnemyNotFound;
 use App\Game\Movement\Movement;
 
-class Player 
+/**
+ * Class Player
+ * @package App\Game\Player
+ */
+class Player
 {
 
     /**
@@ -62,6 +66,12 @@ class Player
         return false;
     }
 
+    /**
+     * Implements control to look for a fight
+     * If a fight is found, return the CombatScenario
+     *
+     * @return CombatScenario|bool
+     */
     public function lookForFight()
     {
         $combat = new CombatScenario;
