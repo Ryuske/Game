@@ -19,7 +19,7 @@ class LocationCollection {
         $this->map = new Map;
         
         foreach ($this->attributes as $attribute) {
-            $this->data[$attribute] = $data[$attribute];
+            $this->data[$attribute] = (array_key_exists($attribute, $data)) ? $data[$attribute] : NULL;
         }
     }
 
