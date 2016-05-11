@@ -3,7 +3,8 @@
 use App\Game\Collections\LocationCollection;
 use App\Game\Movement\Movement;
 
-class Player {
+class Player 
+{
 
     /**
      * @var Movement
@@ -45,7 +46,8 @@ class Player {
      * @return bool
      * @throws \Exception
      */
-    public function walkTo($city) {
+    public function walkTo($city)
+    {
         $player = $this->movement->player($this);
 
         if ($player->CanWalk($city)) {

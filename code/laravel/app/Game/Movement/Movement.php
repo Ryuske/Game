@@ -21,7 +21,8 @@ class Movement
      * @param Player $player
      * @return $this
      */
-    public function player(Player $player) {
+    public function player(Player $player)
+    {
         $this->person = new PlayerContract($player);
         
         return $this;
@@ -34,7 +35,8 @@ class Movement
      * @return bool
      * @throws \Exception
      */
-    public function canWalk($desired_city) {
+    public function canWalk($desired_city)
+    {
         if (!$this->person instanceof Person) {
             throw new \Exception('No Person found. Method only available after selecting a Person.');
         }
@@ -48,7 +50,8 @@ class Movement
      * @param $city
      * @throws \Exception
      */
-    public function walkTo($city) {
+    public function walkTo($city)
+    {
         if (!$this->person instanceof Person) {
             throw new \Exception('No Person found. Method only available after selecting a Person.');
         }

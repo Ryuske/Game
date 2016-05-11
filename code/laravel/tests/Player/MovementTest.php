@@ -20,14 +20,16 @@ class MovementTest extends TestCase
         ], $player->location()->nearByCities());
     }
 
-    public function testWalkingToNeighboringCity() {
+    public function testWalkingToNeighboringCity()
+    {
         $player = new Player;
 
         $this->assertTrue($player->walkTo('Zandor'));
         $this->assertEquals('Zandor', $player->location()->city);
     }
 
-    public function testWalkingToNonNeighboringCity() {
+    public function testWalkingToNonNeighboringCity()
+    {
         $player = new Player;
 
         $this->assertFalse($player->walkTo('Yarie'));

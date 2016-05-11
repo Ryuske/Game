@@ -2,7 +2,8 @@
 
 use App\Game\Movement\Map;
 
-class LocationCollection {
+class LocationCollection
+{
 
     protected $attributes = [
         'city'
@@ -14,7 +15,8 @@ class LocationCollection {
     
     protected $map;
     
-    public function __construct(&$data) {
+    public function __construct(&$data)
+    {
         $this->dataStore = &$data;
         $this->map = new Map;
         
@@ -23,11 +25,13 @@ class LocationCollection {
         }
     }
 
-    public function __get($name) {
+    public function __get($name)
+    {
         return $this->data[$name];
     }
 
-    public function __set($name, $value) {
+    public function __set($name, $value)
+    {
         $this->data[$name] = $value;
     }
 
@@ -36,11 +40,13 @@ class LocationCollection {
      *
      * @return mixed
      */
-    public function nearByCities() {
+    public function nearByCities()
+    {
         return $this->map->neighboringCities($this->data['city']);
     }
 
-    public function save() {
+    public function save()
+    {
         $this->dataStore = $this->data;
     }
 }

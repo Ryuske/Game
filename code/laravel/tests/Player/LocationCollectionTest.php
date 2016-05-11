@@ -17,7 +17,8 @@ class LocationCollectionTest extends TestCase
         $this->assertEquals('Lattocy', $player->location()->city);
     }
 
-    public function testLocationCollectionAttributeSetter() {
+    public function testLocationCollectionAttributeSetter()
+    {
         $player = new Player;
 
         $location = $player->location();

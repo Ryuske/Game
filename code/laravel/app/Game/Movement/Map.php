@@ -1,6 +1,7 @@
 <?php namespace App\Game\Movement;
 
-class Map {
+class Map 
+{
 
     /**
      * List of the known nations within the game
@@ -74,7 +75,8 @@ class Map {
      * @param $cityB
      * @return bool
      */
-    public function citiesAreNeighbors($cityA, $cityB) {
+    public function citiesAreNeighbors($cityA, $cityB)
+    {
         return in_array($cityB, $this->neighborCities[$cityA]);
     }
 
@@ -84,7 +86,8 @@ class Map {
      * @param $city
      * @return mixed
      */
-    public function neighboringCities($city) {
+    public function neighboringCities($city)
+    {
         return $this->neighborCities[$city];
     }
 }

@@ -1,6 +1,7 @@
 <?php namespace App\Game\Movement\Person;
 
-interface Person {
+interface Person
+{
 
     /**
      * @param $desired_city
