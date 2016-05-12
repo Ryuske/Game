@@ -83,7 +83,7 @@ class SkillsCollection
                     Event::fire(new PlayerLossesHeath($this->data[$name] - $value, $value));
                 }
 
-            if ($value >= 0) {
+            if ($value <= 0) {
                 $this->related->died();
             }
         }

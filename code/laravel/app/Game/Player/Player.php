@@ -100,8 +100,8 @@ class Player
     public function lookForFight()
     {
         $combat = new CombatScenario($this);
-        $enemy = $combat->lookForEnemy();
-        
+        $enemy  = $combat->lookForEnemy();
+
         if (!$enemy) {
             Event::fire(new EnemyNotFound);
 

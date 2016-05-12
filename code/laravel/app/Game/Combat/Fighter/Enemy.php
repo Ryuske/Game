@@ -44,20 +44,18 @@ class Enemy implements Fighter
         $attackerMissed = !$this->combatFormulas->enemy($this->combatScenario->enemy)->isAttackSuccessful();
         $damageDealt    = $this->combatFormulas->enemy($this->combatScenario->enemy)->damageDealt();
 
-        if (!$attackerMissed) {
-            $this->combatScenario->player->skill()->health -= $damageDealt;
-        }
-
         $combatDamage = new CombatDamageCollection([
-            'attacker'          => $this->combatScenario->enemy,
+            'attacker'          => $this->combatScenario->enemy->info()->name,
             'defender'          => 'Player',
-            'attacker_missed'   => ($attackerMissed) ? 'true' : 'false',
+            'attacker_missed'   => $attackerMissed,
             'damage_dealt'      => $damageDealt
         ]);
 
         Event::fire(new EnemyAttacks($combatDamage));
 
-        return $combatDamage;
+        if (!$attackerMissed) {
+            $this->combatScenario->player->skill()->health -= $damageDealt;
+        }
     }
 
     /**

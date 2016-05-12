@@ -12,8 +12,8 @@ class Enemy
 
     public function __construct($enemy)
     {
-        $this->info     = $enemy->info;
-        $this->skills   = $enemy->skills;
+        $this->info     = $enemy['info'];
+        $this->skills   = $enemy['skills'];
     }
 
     public function info() {
@@ -25,6 +25,6 @@ class Enemy
     }
 
     public function died() {
-        
+
     }
 }

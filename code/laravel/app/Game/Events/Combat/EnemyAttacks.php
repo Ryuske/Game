@@ -24,6 +24,11 @@ class EnemyAttacks
     public function __construct(CombatDamageCollection $combatDamage)
     {
         $this->combatDamage = $combatDamage;
-        print_r($this->combatDamage->all());
+
+        if ($this->combatDamage->attacker_missed) {
+            echo $this->combatDamage->attacker . " missed Player\n";
+        } else {
+            echo "Enemy attack landed!\n";
+        }
     }
 }

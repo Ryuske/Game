@@ -75,7 +75,7 @@ class EnemySkillsCollection
                     Event::fire(new EnemyLossesHeath($this->parent->info(), $this->data[$name] - $value, $value));
                 }
 
-                if ($value >= 0) {
+                if ($value <= 0) {
                     $this->parent->died();
                 }
         }

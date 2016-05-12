@@ -1,4 +1,4 @@
-<?php namespace App\Game\Events\Player;
+<?php namespace App\Game\Events\Combat;
 
 class EnemyLossesHeath
 {
@@ -25,6 +25,6 @@ class EnemyLossesHeath
         $this->healthLost   = $healthLost;
         $this->heathLeft    = $healthLeft;
 
-        echo $enemy->info()->name . " lost $healthLost health; $healthLeft heath remaining.\n";
+        echo $enemy->name . " lost $healthLost health; $healthLeft heath remaining.\n";
     }
 }

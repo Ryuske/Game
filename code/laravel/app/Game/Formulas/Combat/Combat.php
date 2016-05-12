@@ -45,6 +45,11 @@ class Combat
         return new EnemyCombatFormulas($enemy);
     }
 
+    public function player($player)
+    {
+        return new PlayerCombatFormulas($player);
+    }
+
     /**
      * Used to find an enemy within a specific location, based on the rarity of the
      * individual enemy.
@@ -114,7 +119,7 @@ class Combat
 
         // Set all the rarity ranges & the total rarity
         foreach ($nearByEnemies as $enemy) {
-            $rarity = $enemy->stats()->rarity;
+            $rarity = $enemy->info()->rarity;
 
             $enemyRarityRanges[$enemy->info()->name] = [
                 'low'  => $totalRarities + 1,
@@ -131,7 +136,7 @@ class Combat
             if ($rarityRange >= $rarityRange['low'] && $rarityIndex <= $rarityRange['high']) {
 
                 // Exit loop, return as early as possible
-                return $this->nearByEnemies[$enemyName];
+                return $nearByEnemies[$enemyName];
             }
         }
     }

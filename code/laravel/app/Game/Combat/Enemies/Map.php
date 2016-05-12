@@ -17,7 +17,7 @@ class Map extends GameMap
         'Eci'     => [
             'info'   => [
                 'name'   => 'Eci',
-                'rarity' => 20, // Probability of finding this enemy (X% of enemies will be this)
+                'rarity' => 20, // Probability of finding this enemy
             ],
             'skills' => [
                 'health'   => 20,
@@ -128,7 +128,7 @@ class Map extends GameMap
             $enemies = [];
 
             foreach ($this->enemyLocations[$location] as $enemyName) {
-                $enemies[$enemyName] = (new Enemy($enemyName));
+                $enemies[$enemyName] = (new Enemy($this->enemies[$enemyName]));
             }
             return $enemies;
         }
