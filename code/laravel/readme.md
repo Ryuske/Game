@@ -1,7 +1,6 @@
 # Game - No Idea What It's Called Yet
 
 ## To Do
-* Write unit tests for player attacking & whatever other combat things don't have unit tests
 * Add player heal & run
 * Work on damage calculator so that 1 hit KOs aren't possible in the very beginning of the game -- oops!
 * Make collections throw exception if trying to access an index that doesn't exist

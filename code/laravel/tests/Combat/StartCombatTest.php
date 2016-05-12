@@ -25,15 +25,23 @@ class StartCombatTest extends TestCase
             EnemyNotFound::class
         ]);
 
-        $player = new Player;
+        $found      = false;
+        $notFound   = false;
+        $player     = new Player;
+        $combat     =   NULL;
 
-        for ($i=0; $i<10; $i++) {
-            $player->lookForFight();
-        }
+        $player->skill()->health = 1000;
 
         do {
-            $combat = $player->lookForFight();
-        } while (!$combat);
+            $results = $player->lookForFight();
+
+            if (!$results) {
+                $notFound = true;
+            } else {
+                $found = true;
+                $combat = $results;
+            }
+        } while (!$found || !$notFound);
 
         $this->assertInstanceOf(CombatScenario::class, $combat);
     }
