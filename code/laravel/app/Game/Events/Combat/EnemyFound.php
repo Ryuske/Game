@@ -15,8 +15,8 @@ class EnemyFound
     /**
      * Handle the event of an enemy being found
      * - This is meant to be broadcast and consumed with websockets. Til then, just echo stuff out
-     *
      * EnemyFound constructor.
+     * 
      * @param $enemy
      */
     public function __construct($enemy)

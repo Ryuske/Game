@@ -10,6 +10,8 @@ class Map extends GameMap
 {
 
     /**
+     * Not sure this is the right place for this
+     *
      * @var array
      */
     protected $enemies = [

@@ -26,10 +26,11 @@ class CombatDamageCollection
      */
     protected $data;
 
+
     /**
      * Create a collection with the values taken from the data passed in
+     * CombatDamageCollection constructor.
      *
-     * LocationCollection constructor.
      * @param $data
      */
     public function __construct($data)

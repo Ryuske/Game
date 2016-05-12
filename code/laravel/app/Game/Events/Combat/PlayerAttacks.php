@@ -17,8 +17,8 @@ class PlayerAttacks
     /**
      * Handle the event a player attacking
      * - This is meant to be broadcast and consumed with websockets. Til then, just echo stuff out
+     * PlayerAttacks constructor.
      *
-     * EnemyAttacks constructor.
      * @param CombatDamageCollection $combatDamage
      */
     public function __construct(CombatDamageCollection $combatDamage)

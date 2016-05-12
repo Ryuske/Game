@@ -10,8 +10,8 @@ class EnemyNotFound
     /**
      * Handle the event of an enemy NOT being found
      * - This is meant to be broadcast and consumed with websockets. Til then, just echo stuff out
-     *
      * EnemyNotFound constructor.
+     *
      */
     public function __construct()
     {

@@ -1,6 +1,10 @@
 <?php namespace App\Game\Movement;
 
-class Map 
+/**
+ * Class Map
+ * @package App\Game\Movement
+ */
+class Map
 {
 
     /**
@@ -21,7 +25,7 @@ class Map
      * @var array
      */
     protected $cities = [
-        'Tenedarg' => [
+        'Tenedar' => [
             'Yarie',
             'Zandor',
             'Lattocy',

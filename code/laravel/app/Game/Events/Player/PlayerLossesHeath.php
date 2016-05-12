@@ -17,12 +17,14 @@ class PlayerLossesHeath
      */
     public $heathLeft;
 
+
     /**
-     * Handle the event the player lossing heath
+     * Handle the event the player losing heath
      * - This is meant to be broadcast and consumed with websockets. Til then, just echo stuff out
+     * PlayerLossesHeath constructor.
      *
-     * EnemyAttacks constructor.
-     * @param CombatDamageCollection $combatDamage
+     * @param $healthLost
+     * @param $healthLeft
      */
     public function __construct($healthLost, $healthLeft)
     {

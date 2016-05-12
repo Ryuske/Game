@@ -3,6 +3,9 @@
 use App\Game\Player\Player;
 use Illuminate\Foundation\Testing\WithoutMiddleware;
 
+/**
+ * Class MovementTest
+ */
 class MovementTest extends TestCase
 {
     /**

@@ -1,5 +1,9 @@
 <?php namespace App\Game\Collections;
 
+/**
+ * Class EnemyInfoCollection
+ * @package App\Game\Collections
+ */
 class EnemyInfoCollection
 {
 
@@ -27,12 +31,17 @@ class EnemyInfoCollection
      */
     protected $data;
 
+    /**
+     * Instance of the parent object, allows for potentially weird access to related data
+     *
+     * @var
+     */
     protected $parent;
 
     /**
      * Create a collection with the values taken from the original data source
+     * EnemyInfoCollection constructor.
      *
-     * LocationCollection constructor.
      * @param $data
      */
     public function __construct($parent, &$data)

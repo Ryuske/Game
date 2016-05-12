@@ -69,7 +69,7 @@ class CombatScenario
 
     /**
      * Look for an enemy to fight
-     * - You have a 75% change of finding an enemy, otherwise nothing is found
+     * - You have a 75% chance of finding an enemy, otherwise nothing is found
      *
      * @return bool|void
      */
@@ -90,8 +90,11 @@ class CombatScenario
         return true;
     }
 
+
     /**
      * If an enemy is found, begin the combat
+     *
+     * @return void
      */
     public function beginCombat() {
         $playerStarts = $this->combatFormulas->DoesPlayerGetFirstMove();

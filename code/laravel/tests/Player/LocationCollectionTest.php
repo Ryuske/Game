@@ -3,6 +3,9 @@
 use App\Game\Player\Player;
 use Illuminate\Foundation\Testing\WithoutMiddleware;
 
+/**
+ * Class LocationCollectionTest
+ */
 class LocationCollectionTest extends TestCase
 {
     

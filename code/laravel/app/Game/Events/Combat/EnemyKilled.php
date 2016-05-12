@@ -2,6 +2,10 @@
 
 use App\Game\Combat\Enemies\Enemy;
 
+/**
+ * Class EnemyKilled
+ * @package App\Game\Events\Combat
+ */
 class EnemyKilled
 {
 
@@ -10,12 +14,13 @@ class EnemyKilled
      */
     public $enemy;
 
+
     /**
      * Handle the event an enemy attacking
      * - This is meant to be broadcast and consumed with websockets. Til then, just echo stuff out
+     * EnemyKilled constructor.
      *
-     * EnemyAttacks constructor.
-     * @param CombatDamageCollection $combatDamage
+     * @param Enemy $enemy
      */
     public function __construct(Enemy $enemy)
     {

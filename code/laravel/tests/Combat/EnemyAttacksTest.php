@@ -5,6 +5,9 @@ use App\Game\Events\Player\PlayerLossesHeath;
 use App\Game\Player\Player;
 use Illuminate\Foundation\Testing\WithoutMiddleware;
 
+/**
+ * Class EnemyAttacksTest
+ */
 class EnemyAttacksTest extends TestCase
 {
 

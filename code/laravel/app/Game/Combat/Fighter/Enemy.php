@@ -26,6 +26,7 @@ class Enemy implements Fighter
 
     /**
      * Enemy constructor.
+     * 
      * @param CombatScenario $combatScenario
      */
     public function __construct(CombatScenario $combatScenario)

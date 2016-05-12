@@ -112,7 +112,7 @@ class Player
     }
 
     /**
-     * Controls a players death - Game Over
+     * Controls a players death - Game Overgs
      */
     public function died()
     {

@@ -1,9 +1,12 @@
 <?php namespace App\Game\Collections;
 
 use App\Game\Events\Player\PlayerLossesHeath;
-use App\Game\Player\Player;
 use Event;
 
+/**
+ * Class SkillsCollection
+ * @package App\Game\Collections
+ */
 class SkillsCollection
 {
 
@@ -44,8 +47,8 @@ class SkillsCollection
 
     /**
      * Create a collection with the values taken from the original data source
+     * SkillsCollection constructor.
      *
-     * LocationCollection constructor.
      * @param $data
      */
     public function __construct($related, &$data)
@@ -77,6 +80,7 @@ class SkillsCollection
      */
     public function __set($name, $value)
     {
+        // Probably should find a better place for this
         switch ($name) {
             case 'health':
                 if ($value < $this->data[$name]) {

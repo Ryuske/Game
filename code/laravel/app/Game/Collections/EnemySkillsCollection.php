@@ -3,6 +3,10 @@
 use App\Game\Events\Combat\EnemyLossesHeath;
 use Event;
 
+/**
+ * Class EnemySkillsCollection
+ * @package App\Game\Collections
+ */
 class EnemySkillsCollection
 {
 
@@ -32,12 +36,17 @@ class EnemySkillsCollection
      */
     protected $data;
 
+    /**
+     * Instance of the parent object, allows for potentially weird access to related data
+     *
+     * @var
+     */
     protected $parent;
 
     /**
      * Create a collection with the values taken from the original data source
+     * EnemySkillsCollection constructor.
      *
-     * LocationCollection constructor.
      * @param $data
      */
     public function __construct($parent, &$data)
@@ -69,6 +78,7 @@ class EnemySkillsCollection
      */
     public function __set($name, $value)
     {
+        // Probably, this isn't the best place for this
         switch ($name) {
             case 'health':
                 if ($value < $this->data[$name]) {

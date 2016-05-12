@@ -3,6 +3,9 @@
 use App\Game\Player\Player;
 use Illuminate\Foundation\Testing\WithoutMiddleware;
 
+/**
+ * Class SkillsCollectionTest
+ */
 class SkillsCollectionTest extends TestCase
 {
 

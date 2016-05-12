@@ -45,6 +45,12 @@ class Combat
         return new EnemyCombatFormulas($enemy);
     }
 
+    /**
+     * Access for combat formulas specifically relating to the player
+     *
+     * @param $player
+     * @return PlayerCombatFormulas
+     */
     public function player($player)
     {
         return new PlayerCombatFormulas($player);

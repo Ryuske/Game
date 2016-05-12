@@ -2,6 +2,10 @@
 
 use App\Game\Formulas\Generic;
 
+/**
+ * Class PlayerCombatFormulas
+ * @package App\Game\Formulas\Combat
+ */
 class PlayerCombatFormulas
 {
 
@@ -12,6 +16,7 @@ class PlayerCombatFormulas
 
     /**
      * EnemyCombatFormulas constructor.
+     * 
      * @param $enemy
      */
     public function __construct($player)

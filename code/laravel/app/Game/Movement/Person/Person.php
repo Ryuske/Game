@@ -1,5 +1,9 @@
 <?php namespace App\Game\Movement\Person;
 
+/**
+ * Interface Person
+ * @package App\Game\Movement\Person
+ */
 interface Person
 {
 

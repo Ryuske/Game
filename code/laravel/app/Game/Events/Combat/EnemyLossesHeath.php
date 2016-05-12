@@ -1,5 +1,9 @@
 <?php namespace App\Game\Events\Combat;
 
+/**
+ * Class EnemyLossesHeath
+ * @package App\Game\Events\Combat
+ */
 class EnemyLossesHeath
 {
 
@@ -13,12 +17,15 @@ class EnemyLossesHeath
      */
     public $heathLeft;
 
+
     /**
      * Handle the event the enemy losing heath
      * - This is meant to be broadcast and consumed with websockets. Til then, just echo stuff out
+     * EnemyLossesHeath constructor.
      *
-     * EnemyAttacks constructor.
-     * @param CombatDamageCollection $combatDamage
+     * @param $enemy
+     * @param $healthLost
+     * @param $healthLeft
      */
     public function __construct($enemy, $healthLost, $healthLeft)
     {

@@ -2,6 +2,10 @@
 
 use App\Game\Movement\Map;
 
+/**
+ * Class LocationCollection
+ * @package App\Game\Collections
+ */
 class LocationCollection
 {
 
@@ -35,8 +39,8 @@ class LocationCollection
 
     /**
      * Create a collection with the values taken from the original data source
+     * LocationCollection constructor
      *
-     * LocationCollection constructor.
      * @param $data
      */
     public function __construct(&$data)
@@ -73,6 +77,8 @@ class LocationCollection
 
     /**
      * Find the neighboring cities of the city in the localized collection
+     * - Probably need to make model accessors for collections, so collections
+     * don't handle weird relational stuff
      *
      * @return mixed
      */

@@ -6,11 +6,15 @@ use App\Game\Events\Combat\EnemyNotFound;
 use App\Game\Player\Player;
 use Illuminate\Foundation\Testing\WithoutMiddleware;
 
+/**
+ * Class StartCombatTest
+ */
 class StartCombatTest extends TestCase
 {
 
     /**
-     *  Make sure once an enemy is found, that a CombatScenario instance is returned
+     * Make sure once an enemy is found, that a CombatScenario instance is returned
+     * Also make sure the correct events are fired if an enemy is found & an enemy is not found
      *
      * @return void
      */

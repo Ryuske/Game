@@ -2,6 +2,10 @@
 
 use App\Game\Movement\Map;
 
+/**
+ * Class Player
+ * @package App\Game\Movement\Person
+ */
 class Player implements Person
 {
 

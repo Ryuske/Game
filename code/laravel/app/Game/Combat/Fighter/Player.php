@@ -28,6 +28,7 @@ class Player implements Fighter
 
     /**
      * Enemy constructor.
+     *
      * @param CombatScenario $combatScenario
      */
     public function __construct(CombatScenario $combatScenario)
@@ -59,6 +60,7 @@ class Player implements Fighter
         if (!$attackerMissed) {
             $this->combatScenario->enemy->skill()->health -= $damageDealt;
 
+            // All of this should be moved to enemy->died
             if ($this->combatScenario->enemy->skill()->health <= 0) {
                 $enemyKilled = true;
 
