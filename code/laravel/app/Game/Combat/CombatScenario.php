@@ -80,8 +80,7 @@ class CombatScenario
             return false;
         }
 
-        $nearByEnemies = $this->enemiesMap->enemiesIn($this->player->location()->city);
-        $this->enemy = $this->chooseRandomEnemy($nearByEnemies);
+        $this->enemy = $this->combatFormulas->findEnemyIn($this->player->location()->city);
 
         Event::fire(new EnemyFound($this->enemy));
 
@@ -106,7 +105,7 @@ class CombatScenario
      */
     public function player()
     {
-        return new Fighter\Player;
+        return new Fighter\Player($this);
     }
 
     /**
@@ -117,17 +116,5 @@ class CombatScenario
     public function enemy()
     {
         return new Fighter\Enemy($this);
-    }
-
-    /**
-     * Pick an enemy at random out of the list given
-     * - Eventually this will be more complex, accounting for the rarity of the enemies
-     *
-     * @param $enemies
-     * @return mixed
-     */
-    protected function chooseRandomEnemy($enemies)
-    {
-        return $enemies[array_rand($enemies)];
     }
 }

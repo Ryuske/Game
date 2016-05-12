@@ -22,6 +22,6 @@ class EnemyFound
     public function __construct($enemy)
     {
         $this->enemy = $enemy;
-        echo 'Enemy Found: ' . $this->enemy . "\n";
+        echo 'Enemy Found: ' . $this->enemy->info()->name . "\n";
     }
 }

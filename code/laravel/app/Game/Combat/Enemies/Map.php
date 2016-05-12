@@ -13,16 +13,60 @@ class Map extends GameMap
      * @var array
      */
     protected $enemies = [
-        'Rafe',
-        'Eci',
-        'Xev',
-        'Retaa',
-        'Swodin',
-        'Erif',
-        'Dryad',
-        'Chimera',
-        'Krad',
-        'Gast'
+        'Rafe'    => [],
+        'Eci'     => [
+            'info'   => [
+                'name'   => 'Eci',
+                'rarity' => 20, // Probability of finding this enemy (X% of enemies will be this)
+            ],
+            'skills' => [
+                'health'   => 20,
+                'attack'   => 3,
+                'defence'  => 1,
+                'strength' => 2
+            ]
+        ],
+        'Xev'     => [],
+        'Retaa'   => [
+            'info'   => [
+                'name'   => 'Retaa',
+                'rarity' => 90,
+            ],
+            'skills' => [
+                'health'   => 5,
+                'attack'   => 1,
+                'defence'  => 1,
+                'strength' => 1
+            ]
+        ],
+        'Swodin'  => [],
+        'Erif'    => [],
+        'Dryad'   => [
+            'info'   => [
+                'name'   => 'Dryad',
+                'rarity' => 33,
+            ],
+            'skills' => [
+                'health'   => 10,
+                'attack'   => 2,
+                'defence'  => 3,
+                'strength' => 1
+            ]
+        ],
+        'Chimera' => [],
+        'Krad'    => [],
+        'Gast'    => [
+            'info'   => [
+                'name'   => 'Gast',
+                'rarity' => 33,
+            ],
+            'skills' => [
+                'health'   => 10,
+                'attack'   => 1,
+                'defence'  => 1,
+                'strength' => 1
+            ]
+        ]
     ];
 
     /**
@@ -81,7 +125,12 @@ class Map extends GameMap
     public function enemiesIn($location)
     {
         if (array_key_exists($location, $this->enemyLocations)) {
-            return $this->enemyLocations[$location];
+            $enemies = [];
+
+            foreach ($this->enemyLocations[$location] as $enemyName) {
+                $enemies[$enemyName] = (new Enemy($enemyName));
+            }
+            return $enemies;
         }
 
         return NULL;

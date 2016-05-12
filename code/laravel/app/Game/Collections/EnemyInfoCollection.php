@@ -1,10 +1,6 @@
 <?php namespace App\Game\Collections;
 
-use App\Game\Events\Player\PlayerLossesHeath;
-use App\Game\Player\Player;
-use Event;
-
-class SkillsCollection
+class EnemyInfoCollection
 {
 
     /**
@@ -13,19 +9,8 @@ class SkillsCollection
      * @var array
      */
     protected $attributes = [
-        'attack',
-        'defence',
-        'strength',
-        'health',
-        'archery',
-        'smelting',
-        'smithing',
-        'mining',
-        'coding',
-        'fletching',
-        'alchemy',
-        'cooking',
-        'breeding'
+        'name',
+        'rarity'
     ];
 
     /**
@@ -42,15 +27,17 @@ class SkillsCollection
      */
     protected $data;
 
+    protected $parent;
+
     /**
      * Create a collection with the values taken from the original data source
      *
      * LocationCollection constructor.
      * @param $data
      */
-    public function __construct($related, &$data)
+    public function __construct($parent, &$data)
     {
-        $this->related      = $related;
+        $this->parent       = $parent;
         $this->dataStore    = &$data;
 
         foreach ($this->attributes as $attribute) {
@@ -77,20 +64,7 @@ class SkillsCollection
      */
     public function __set($name, $value)
     {
-        switch ($name) {
-            case 'health':
-                if ($value < $this->data[$name]) {
-                    Event::fire(new PlayerLossesHeath($this->data[$name] - $value, $value));
-                }
-
-            if ($value >= 0) {
-                $this->related->died();
-            }
-        }
-        
         $this->data[$name] = $value;
-
-        $this->save();
     }
 
     /**
